@@ -1,0 +1,116 @@
+* Tekstsredigeringsprogrammer / Text editors
+
+** Man trenger å redigere tekst
+- For å jobbe med kildekode i ulike programmeringsspråk (utvikling)
+- For å konfigurere programvare på servere og desktop (driftstøtte)
+- For å skrive dokumentasjon (brukerstøtte)
+- For å ta notater (driftstøtte, brukerstøtte, utvikling, andre fag, personlige notater...)
+- For å lage innholdet til nettsider (hvis man ikke gjør det via GUIer sånn som Wordpress etc)
+- For å skrive hva vi forandret i filer vi sjekker inn via versjonskontroll (Git commit messages)
+- For å skrive oppgaver til skole eller studier (LaTex kan fikse formatering og kildelister automatisk så man kan fokusere på innholdet)
+- ...
+  
+** WYSIWYG Word Processors?
+- What You See Is What You Get
+- MS Word, Apple Pages, Libreoffice Writer...
+- Sideoppsett er sentralt, for utskrift eller eksport til PDF eller PS
+- Ingen funksjonalitet for utvikling og systemadministrasjon
+  - ikke syntax highlighting for programmeringsspråk eller markupspråk
+  - ikke code completion
+  - ingen REPL for å prøve ut kode
+  - ikke hjelp for innebygde funksjoner og stikkord etc.
+  - ingen innebygde verktøy for versjonskontroll
+  - ingen innebygd terminal
+- Treg tekstredigering
+  - Få tastatursnareveier for redigering og å hoppe rundt i teksten
+  - Ikke Makroer
+
+** IDE = Integrated Development Environment
+- Enkelt å komme i gang, gode standardinnstillinger
+- Noen ganger rettet mot bestemte programmeringsspråk
+- Du må tilpasse deg IDEen, ikke omvendt
+- Større programmer, noen er bygget på toppen av en nettleser vha Electron (Visual Studio Code)
+- Kan ikke kjøre på en tty eller Terminal, bare som GUI-programmer
+- Noen er FOSS (Free and Open Source Software = fri programvare med åpen kildekode), mange er det ikke
+- Et stort flertall av programvareutviklere ute i virkeligheten bruker IDEer selv om nokså mange også bruker text editors
+- Det er ikke alltid helt tydelig om et program er en IDE eller en text editor og det er kanskje ikke så viktig heller.
+  
+** Text editors
+- Bare tekstredigering i utgangspunktet
+- Litt vanskeligere å komme i gang, man må selv velge innstillinger og sette ting opp
+- Man legger til den funskjonaliteten man ønsker seg via ferdiglagde utvidelser eller egen kode
+- Mindre programmer som gjør én ting bra? (Unix-filosofien)
+- Du tilpasser programmet til deg, ikke omvendt
+- Vi og Emacs startet som terminal-programmer og fikk senere også et GUI
+- Andre er bare i et GUI eller bare i terminalen
+- De fleste er FOSS, men noen er det ikke
+- De eldste av de er utviklet av brukerne, har overlevd mens andre har kommet og gått og vil trolig fortsatt finnes langt inn i framtiden (Selv FOSS-programmer som utvikles av én person eller ett selskap kan lett forsvinne når utvikleren(e) skifter prioriteringer. Det skjedde nylig med en IDE som het Atom og har skjedd tusen gang før. Man kan forke, men det krever mye arbeid. Med proprietære programmer er man helt sjanseløs.)
+- De fleste systemadministratorer bruker text editors fordi de (også) kan brukes via terminaler
+
+** Tekstredigeringsprogrammer
+
+|                      | Vim            | NeoVim         | Nano             | Emacs          | Notepad ++ | VisualStudio Code | Sublime Text | Visual Studio | XCode   |
+|----------------------+----------------+----------------+------------------+----------------+------------+-------------------+--------------+---------------+---------|
+| OperativSystemer     | Alle           | Alle           | Alle             | Alle           | Windows    | Alle              | Alle         | Windows       | MacOS X |
+| Terminal eller GUI   | Begge (Term)   | Terminal       | Terminal         | Begge (GUI)    | GUI        | GUI               | GUI          | GUI           | GUI     |
+| Preinstallert        | Linux + MacOS  | Nei            | Ubuntu           | Nei            | Nei        | Nei               | Nei          | Nei           | Nei     |
+| Lisens               | Vim (kompat.)  | Vim + Apache2  | GPL3             | GPL3           | GPL3       | Ufri + MIT        | ShareWare    | Ufri          | Ufri    |
+| Utviklet av brukerne | Bram M ++      | Ja             | Ja               | Ja             | Dan Ho ++  | Nei               | Nei          | Nei           | Nei     |
+| Eksistert siden      | 1991           | 2015           | 1999             | 1985           | 2003       | 2015              | 2008         | 1997          | 2003    |
+| Utvidelser           | VimScript      | Lua            | Nei              | Elisp          | Nei        | JavaScript        | Python       | Bare fra MS   | Nei     |
+| Code completion      | Utvidelse, LSP | Utvidelse, LSP | Nei              | Utvidelse, LSP | Nei        | Ja, LSP           | Ja           | Ja            | Ja      |
+| Pris                 | Donasjon       | Gratis         | Gratis           | Gratis         | Gratis     | Gratis            | Gratis       | Freemium      | $100    |
+| Språk                | Alle           | Alle           | Alle             | Alle           | Alle       | Alle              | Alle         | Microsoft     | Apple   |
+
+** Nei, Visual Studio Code er ikke fri programvare eller åpen kildekode
+- https://code.visualstudio.com/docs/supporting/faq
+- https://github.com/microsoft/vscode/issues/60#issuecomment-161792005
+- Dette er lisensen for Visual Studio Code: https://code.visualstudio.com/License/
+- GitHub-prosjektet med MIT-lisensen er bare en del av det du får når du innstallerer VSCode.
+- Åpen kildekode-programvare må bruke en av lisensene godkjent av OSI: https://opensource.org/licenses/
+- Fri programvare må bruke en av lisensene godkjent av FSF: https://www.gnu.org/licenses/license-list.html
+- Så å si alle lisenser som er godkjent av OSI er også godkjent av FSF, så fri programvare = åpen kildekode (= FOSS).
+
+** Historie
+- Dagens (Neo)Vim og Emacs har lange historier og er inspirert av tidligere text editors. Ed og Ex var line editors, ikke full page.
+- Ed (1970) -> ex (1976) -> Vi (1976) -> Vim (1991) -> NeoVim (2015)
+- Teco (1962) -> Stallman + Steele Emacs (1976) -> Gosling Emacs (1981) -> GNU Emacs (1985) (<-> Lucid Emacs / XEMacs, uEmacs)
+- pico (1989) -> nano (1999)
+
+** Hva bruker folk i bransjen?
+https://survey.stackoverflow.co/2022/#section-most-popular-technologies-integrated-development-environment
+
+** Hva liker folk i bransjen?
+https://survey.stackoverflow.co/2022/#section-most-loved-dreaded-and-wanted-integrated-development-environment
+
+** Hva bruker de som tjener mest?
+https://survey.stackoverflow.co/2022/#top-paying-technologies-integrated-development-environment
+
+** Valg av text editor / IDE
+- Du må velge hvilken du vil bruke (til vanlig) før neste mandag
+- Det tar tid å lære seg å bruke et verktøy effektivt
+- Start med det enkle og gå dypere over tid
+- Lær deg ett tillegg eller en innebygd funksjon av gangen
+- Vi kommer til å se på grunnleggende bruk av Nano, (Neo)Vim, Emacs, VSCode og Notepad++
+- Man kan ombestemme seg senere, men det tar tid å bli god til å bruke verktøyene effektivt og muskelminnet må trenes på nytt.
+  
+** Hva jeg tenker er bra til hva (vær gjerne uenig)
+- VS Code er bra hvis du ønsker å jobbe med Windows-drift eller programmering, liker GUI-sentriske workflows og integrasjon med MS økosystemet (GitHub, Copilot, WSL2 etc).
+- Notepad ++ er bra hvis du ønsker å jobbe med Windows-drift eller koding i framtiden og liker et enkelt, relativt tekst-sentrisk workflow.
+- Vim er bra hvis man liker rask, ergonomisk teksredigering og vil jobbe med GNU/Linux drift eller programmering
+- NeoVim er bra hvis man liker Vim, men ønsker mer utvidbarhet og en enklere start, for programmering eller GNU/Linux drift.
+- Nano er enkel for redigering av configfiler på GNU/Linux servere (spesielt Ubuntu der den er forhåndsinnstallert ).
+- Emacs har enklere redigering (Neo)Vim fordi det ikke er modal redigering, den er überutvidbar, konfigureres/programmeres i Elisp.
+
+** Praktiske oppgaver
+- Forrige gang så vi på Vim tutor.
+- Ta en titt på Nano sammen.
+- Prøv Emacs tutor.
+  
+** Videoer for inspirasjon
+- Visual Studio Code: Offisiell youtube-kanal: https://www.youtube.com/@code
+- Emacs: Skybert Hacks: https://www.youtube.com/@skybert , System Crafters: https://www.youtube.com/@SystemCrafters/playlists
+- Vim: Luke Smith's Vim playlist: https://www.youtube.com/playlist?list=PL-p5XmQHB_JSTaEPygu1DZjuFfb704Uv7
+- NeoVim: Dreams of Code: https://www.youtube.com/@dreamsofcode/videos
+- Notepad++: Christian Amit Notepad++ playlist: https://www.youtube.com/playlist?list=PL1z4RL0Mc_2XuRjFgG8Xgjc8XYTZK8QJq
+

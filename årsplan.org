@@ -1,0 +1,35 @@
+Utvikling VG2
+
+Høsten:
+
+Installere Debian 12 på WSL2 (alt man lærer i Debian er også relevant for Ubuntu etc)
+Tekstredigeringsprogrammer (du velger det du liker best) (integrasjon WSL2 og VSCode)
+Git på kommandolinja
+Installere Python i WSL2 - integrasjon mellom VSCode og WSL2, bruke Python REPL etc
+Aritmetiske operatorer, typer, variabler, feilmeldinger, når ting går over flere linjer, lesbar kode
+Funksjoner
+Arbeide med tekst
+If-statements og boolsk algebra
+Moduler
+Metoder (Methods)
+Lister og listemetoder
+Loop og repetisjon
+Lese og skrive filer
+Sets, Tuples, Dictionaries og deres metoder
+Algoritmer
+Søk og sortering
+Objektorientert programmering
+Testing og debugging
+Grafiske brukergrensesnitt med tkinter
+Databaser
+
+---------------------------------------
+
+Repetisjon av HTML, CSS og JavaScript
+Mer JavaScript eller Svelte...
+
+Hvis de lærte nok JS til at de er klare for det kan vi dykke ned i et Webframwork. Jeg vurderer å følge boka Kode 2 om utvikling vha Svelte-rammeverket i så fall. Ellers vil jeg gå for Programmering i JavaScript-boka.
+
+Hvis de ikke er klare for det kan vi jobbe mer med JavaScript opp mot DOMen med HTML og CSS på gamlemåten for å få på plass det grunnleggende. I så fall følger jeg enten boka Kode 1 eller boka Programmering med JavaScript i den grad det passer med det de kan fra før.
+
+Kanskje det også er tid til å lukte på helt andre typer programmeringsspråk og paradigmer sånn som funksjonell programmering i ClojureScript, Racket eller Emacs Lisp? Kompetansemålene sier man skal kunne evaluere når man vil bruke ulike programmeringsspråk ut fra deres egenart, så det å lære de to vanligste for webdev (som det er stor etterspørsel etter) og i tillegg lukte litt på Bash-skripting og ett funksjonelt språk kan kanskje være en god idé? Evt. kunne man gått for noe på lavere nivå sånn som Assembler til X86, en hyggelig mikrokontroller om vi har en eller en "toy machine" på nettet (Brian Kernighan har en på sin hjemmeside tilknyttet sin siste bok).

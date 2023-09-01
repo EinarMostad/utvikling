@@ -1,0 +1,139 @@
+** Detaljplan Utvikling
+
+Mobilhotell
+Opprop
+
+** Bli kjent og om faget
+
+1. Changelog
+
+Presenter deg selv: Changelog
+
+Oppgave (individuell): Lag en changelog over ditt liv. Ta med viktige begivenheter og spesielt ting som har noe med data å gjøre.
+
+2. Kompetansemål og vurdering i faget -> Årsplan
+
+Les gjennom.
+
+Jeg holder på utkrystallisere dette i en årsplan.
+
+Første termin: Python + Computer Science (Informatikk) – konsepter + RPi
+Andre termin: JavaScript og/eller Webframeworks + Andre språk og metodologier (Funksjonell programmering, shell scripting, assembler etc)
+
+Jeg tenker Python og JavaScript er lurt fordi det er mange jobber i webdev og crossplatform dev med webteknologier. Det er også en fin inngangsport til koding og så kan man lære seg andre språk etter hvert. 
+
+Jeg trenger også å vite litt om hva dere kan fra før for å lage en plan. Jeg kommer til å legge inn mulighet for medvirkning og valgfrihet i delere av planen.
+
+Hvor dypt gikk dere i JavaScript i fjor?
+Lærte dere selve språket eller bare noen eksempler på bruk av det? 
+Hvis jeg ber dere å skrive f.eks. en funksjon for å regne om en vinkel fra grader (360 er helt rundt) til nygrader (400 er helt rundt), kan dere gjøre det i JavaScript?
+
+Er det noen av dere som allerede kan programmere i ett eller flere programmeringsspråk? I så fall hvilke og hvor godt kan dere de?
+
+For lett / For vanskelig -> snakk med meg. Individuelle oppgaver på passe nivå, hvis mange mener det samme tilpasser jeg det vi gjør sammen.
+
+** Hjelpemidler og vurdering
+
+Prøv først selv, kjenn på motstanden en ti minutters tid eller noe før du spør en i klassen, meg, Stackoverflow, GitHub CoPilot, ChatGPT etc. Når vi deler kunnskap med hverandre så lærer vi mer alle sammen, og det er fint å lese andres kode og lære av den.
+
+Jeg vurderer ut fra forståelse, ikke bare ut fra at koden virker. Om du har fått hjelp er det helt greit, men du må kunne forklare hvordan koden virker helt ned på detaljplanet for å få de høye karakterene. Hvis man bare får koden til å virke, men ikke vet hvordan, så har man ikke lært noe og det hjelper en ikke til å løse samme problem neste gang.
+
+** Platformer
+It’s learning: Karakterer og kommentarer på oppgaver med karakter
+Visma InSchool: Følg med på timeplanen og få terminkarakterer
+OneNote: Info, ting fra timene, oppgaver underveis, samarbeid om gruppeoppgaver
+GitHub: Dere trenger et remote git repo, hvis dere heller vil bruke  GitLab, CodeBerg, SourceHut, Gitea eller hoste selv er det greit også. Vi kommer til å se litt på enkel bruk av git på kommandolinja. Dere kan gjerne bruke git via text editor eller IDE om dere vil det, men jeg tenker det er fint å vite hvordan man kan gjøre de vanligste tingene via kommandolinja også.
+Tekstredigeringsprogram / IDE: Dere kan velge selv hvilken dere vil bruke, men vi ser litt på noen ulike nå i starten så dere kan ta et informert valg. Uansett hvilken dere velger er det fint å lære seg å bruke det godt.
+Andre verktøy: Bruk det som gir mening
+
+** POSIX
+Multics (MIT) -> Unix (AT/T) -> BSD (Berkely Software Distribution)
+BSD-distribusjoner: NetBSD, GhostBSD, FreeBSD -> Next -> MacOS X
+GNU/Linux distribusjoner (Debian, Ubuntu, Linux Mint, Arch, ElementaryOS, MX, Antix,  Trisquel, Guix...)
+
+POSIX er en standard for Unix-lignende operativsystemer. Det er forskjeller mellom de, men mey av det man lærer på en av de kan brukes på de andre også.
+
+Hva er det vanligste operativsystemet? (webservere, andre servere, routere, IoT, telefoner, smarte TVer, kjøleskap, oppvaskmaskiner, superdatamaskiner, the cloud, klokker...)
+Hva er det vanligste operativsystemet på PCer?
+Siden vi bruker GNU/Linux på det meste vil de fleste utviklere ha nytte av å bruke et utviklermiljø basert på GNU/Linux eller likt nok til at man kan bruke mange av de samme verktøyene. Derfor bruker flere utviklere GNU/Linux enn vanlige folk og det er også mange utviklere som bruker MacOS X som følger POSIX-standarden og kan kjøre det meste av den samme programvaren nesten på samme måte.
+
+** WSL2
+
+Har dere hørt om WSL2? Hva er det?
+En måte å kjøre kommandolinja til noen GNU/Linux distribusjoner (distroer) på Windows. Med WSL2 kan man også kjøre grafiske programmer. I virkeligheten er det en Virtuell Maskin som har litt bedre integrering med resten av Windows enn hvis man bare kjører en Linux distro i en VM.
+
+Hvorfor er det?
+Ellers hadde Windows vært irrelevant for en del tekniske brukere, spesielt de som administrere GNU/Linux servere og utviklere som foretrekker å utvikle på samme platform som koden til slutt vil kjøre på (siden de fleste servere er GNU/Linux). Windows Powershell følger ikke POSIX-standarden. Windows bruker andre linjeslutter enn POSIX. (CR (Carriage return) + LF (Line Feed). Gamle MacOS før X brukte CR. POSIX-standarden bruker LF.)
+
+** Oppgave
+
+Jobb i grupper på tre og finn svarene på disse spørsmålene:
+(Man kan også jobbe alene hvis man ikke har lyst å jobbe sammen med noen.)
+
+Hva er WSL2?
+Hvordan installerer vi det? (Ikke gjør det, bare finn troverdig dokumentasjon på hvordan.)
+Hva er Debian?
+Hvordan installerer vi Debian på WSL2? (Ikke gjør det, bare finn troverdig dokumentasjon på hvordan.)
+
+Hvorfor valgte jeg Debian og ikke en annen GNU/Linux-distro?
+- vanlig å bruke på en server, evt. Ubuntu som er veldig lik.
+
+** Installer WSL2 + Debian
+
+Oppdatere lista over pakker og så oppdatere pakkene
+sudo apt update
+sudo apt upgrade
+
+Forklar sudo: superuser do
+
+Vis de at de kan søke etter navnet på pakker med apt search
+Man kan installere pakker med sudo apt install
+
+Frie/åpne fonter (lisensiert til å bruke til hva man vil):
++ Noto fonts -> emoji 
++ Liberation
++ Hack
+
+Andre ting vi trenger:
++ figlet
++ neofetch, cowsay
++ vim, nvim/neovim, emacs, nano
++ git
+(+ pandoc, texlive, pass, pass-otp, mpc, mpd, mpv, fzf, 
+
+Vis hvordan man navigerer rundt i mappestrukturen med cd, ls, pwd, tree, du -h.
+Vis man og info
+Vis piping av commandoer ls | less, ls | wc -l, ls | grep -i tux 
+(standard out  -> standard in (standard error))
+Vis tab-complete
+Vis file globbing
+Fortell at vi nå kjører programmer fra GNU coreutils i shellet GNU Bash (Bourne Again Shell)
+
+** Tekstredigeringsprogrammer / IDEer:
+
+1. Vim, Neovim
+-> Vimtutor
+
+-------------------------- Vi kom hit --------------
+
+Bram Molenaar døde i forrige uke. 
+Sammenligning mellom ulike teksteditors (Eget org-dokument fra før sommeren.)
+
+2. Nano
+Ta en titt på Nano
+
+3. Emacs
+-> Emacs tutor
+
+4. VSCode
+-> Videoer på youtube fra Microsoft
+Python på WSL: https://www.youtube.com/watch?v=y3TquoKDTPs 
+
+5. Notepad++
+-> Ta en titt på den
+
+3. Git
+
+
+4. GitHub (hvis dere vil velge GitLab, CodeBerg, SourceHut, Gitea eller noe annet er det greit)
+

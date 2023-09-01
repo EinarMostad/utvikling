@@ -1,0 +1,60 @@
+* Versjonskontroll med Git
+
+** Hva er versjonskontroll?
+- Et system for å holde orden på ulike folks bidrag til kildekode
+- Man kan se hvilke forandringer folk har gjort i koden (kalles en diff)
+- Man kan se hva (og hvorfor) ting har blitt forandret (commit messages)
+- Man kan hente koden ned fra en sentral server (forge) for å jobbe på egen maskin
+- Man kan laste opp sine forandringer i koden til en sentral server igjen
+- Systemet holder også orden på ulike grener (branches) av koden som folk jobber med samtidig
+- Historisk har det funnets flere ulike versjonskontrollsystemer
+- I dag bruker de fleste (både FOSS og proprietære prosjekter) Git
+- Git ble utviklet av Linus Torvalds for å holde styr på kildekoden til Linux kernelen
+- Git er ment for kildekode, men kan brukes for alle slags tekstfiler
+- Mange bruker Git for å holde styr på konfigurasjonsfiler for GNU/Linux servere og desktop/laptop maskiner
+
+** Git Forges (Sentraliserte Git servere på webben)
+- Git er ikkke det samme som GitHub eller GitLab osv
+- Git er kommandolinjeprogrammer for versjonskontrol (utviklet for POSIX-kompatible systemer)
+- GitHub, GitLab, Gitea, SourceHut, Codeberg etc er Git Forges, altså sentraliserte Git servere med et brukergrensesnitt via webben
+- Man trenger ikke å bruke en Git Forge for å bruke Git
+- En Git Forge er praktisk for fri programvare / åpen kildekode-prosjekter (FOSS) fordi andre kan finne og lese koden, foreslå ny funksjonalitet (feature request), rapportere feil (report bugs), klone koden ned til sin maskin for å jobbe med sine bidrag til koden og spør om å integrere sine forandringer inn i prosjektets kode
+- GitHub er den vanligste forgen, så det er lurt å lære seg hvordan den virker.
+- Andre vanlige git forges er GitLab, SourceHut, Codeberg og Savannah. Alle er litt forskjellige, men gjør stort sett det samme.
+- Man kan også hoste sin egen git forge på en server eller VPS. Det er vanlig å bruke gitea, men man kan også self-hoste GitLab.
+- Hvis man søker jobb som utvikler er det vanlig at bedriften tar en titt på ens git repos for å se hva man kan, så det er lurt å ha noen repos på en git forge og skrive URLen på CVen.
+
+** Noen viktige ord
+- a repository (repo) - et arkiv
+- a commit - en innsjekking av en eller flere filer
+- a commit message - en beskjed om hva man forandret siden forrige innsjekking
+- untracked - ikke fulgt med på av git
+- unmodified - ikke forandret
+- modified - forandret
+- staged - klargjort for innsjekking
+- staging - klagjøring for innsjekking
+
+** Oppgave 1: Pro Git - Git Basics 
+(Denne oppgaven kommer til å ta lang tid. Legg merke til hvor du er når timen er slutt så det blir lett å fortsette neste gang.)
+1. Last ned boka Pro Git: https://git-scm.com/book/en/v2
+2. Lag en mappe (directory) i Debian på WSL2 ved å skrive mkdir mappenavn. (Finn på mappenavn selv. mkdir = make directory)
+3. Jobb deg gjennom det andre kapittelet i boka som heter Git Basics, fra side 24 - 62. Les gjennom det som står og gjør det boka sier du skal gjøre. Det er lettere å huske ting man har gjort enn om man bare har lest noen greier.
+
+** Kahoot
+https://create.kahoot.it/share/git-pa-kommandolinja/4853de77-aa20-49d7-a768-fdcbd0412315
+  
+** Oppgave 2: GitHub
+Alle skulle ha en GitHub-konto fra i fjor.
+1. Sjekk at du kommer deg inn på GitHub-kontoen din. Hvis ikke må du resette passordet.
+2. Test at du klarer å git pushe et git repo på maskinen din opp til GitHub fra Debian (kommandolinja)
+
+Vi holder på med denne oppgaven. Vis de hvordan de kan sette opp SSH keys og bruke de med GitHub.
+
+** Oppgave 3: VSCode og GitHub
+1. Sjekk ut hvordan du kan bruke Git fra VSCode: https://www.youtube.com/watch?v=i_23KUAEtUM
+2. Lag en testfil i et testrepo og se om du klarer å committe den til GitHub fra VSCode
+3. Slett testfilen og testrepoet.
+
+** Framover
+- Det er lurt å lage seg et repo for koden vi jobber med i utvikling og huske å committe og pushe til GitHub (eller en annen forge)
+- Man kan f.eks. bare lage seg et git repo som heter utvikling der man legger alle filene man lager i faget og passe på å git add, commit og push på slutten av hver time, evt. gjøre det fra VSCode eller en annen editor.

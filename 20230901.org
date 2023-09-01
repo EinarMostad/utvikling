@@ -1,0 +1,44 @@
+* GitHub og VSCode
+** For å kunne git pushe fra kommandolinja
+1. Sett opp SSH keys på Debian ved å gjøre det jeg gjør her:
+  [[./sshkeygen.png]]
+2. Kopier det som kommer ut når du skriver
+      cat ~/.ssh/id_ed25519.pub og trykker retur
+3. Trykk på navnet ditt øverst til høyre.
+4. Trykk på Settings-knappen
+5. Trykk på SSH and GPG keys.
+6. Trykk New key.
+7. Lim inn det du kopierte.
+
+** Test forbindelsen til GitHub via SSH
+1. Åpne Debian.
+2. Skriv ssh -T git@github.com og trykk enter.
+3. Skriv inn passordet til SSH keyen.
+
+** Legge til et repo fra Debian til GitHub
+1. Åpne Debian.
+2. Gå til mappa du vil bruke som et git repo (eller lag den ved å skrive makdir <mappenavn> og så cd <mappenavn>.
+3. Skriv git init -b main og trykk retur. (Dette gjør mappa til et gir repo og gir grenen man er på navnet main.)
+4. Stage filene dine ved å skrive git add <filnavn>. Hvis du vil stage alle kan du skrive git add . .
+5. Skriv git commit -m "<Commit message>". (Bytt ut <Commit message> med noe som gir mer mening, f.eks. First commit.)
+6. Åpne nettleser og gå til github.
+7. Lag et nytt repo uten README og LICENCE-filer.
+8. Der det står "Quick Setup": trykk på SSH.
+9. Kopier linken ved å trykke på symbolet til høyre.
+10. Åpne Debian
+11. Skriv git remote add origin og høyreklikk for å lime inn og trykk retur. Nå legges GitHub til under navnet origin som et remote repo.
+12. Skriv git remote -v og retur for å sjekke forbindelsen til GitHub.
+13. Skriv git push origin main og retur for å pushe det siste commitet opp til GitHub.
+
+** VSCode og GitHub video
+Vi ser denne videoen om hvordan man kan bruke Git fra VSCode sammen: https://www.youtube.com/watch?v=i_23KUAEtUM
+
+** Oppgave:
+1. Lag en testfil i et testrepo og se om du klarer å committe den til GitHub fra VSCode
+2. Slett testfilen og testrepoet.
+
+** Framover
+- Det er lurt å lage seg et repo for koden vi jobber med i utvikling og huske å committe og pushe til GitHub
+- Man kan f.eks. bare lage seg et git repo som heter utvikling der man legger alle filene man lager i faget og passe på å git add, commit - m "<commit message>" og push på slutten av hver time
+- En annen måte å gjøre det på er å bruke de innebygde verktøyene i VSCode (eller en annen editor) til å pushe det du har gjort i timen til utvikling-repoet på GitHub.
+- Når dere får oppgaver med karakter på It's learning trenger dere ikke å levere alle filene. Bare gi meg en link til et git repo der alle filene til denne oppgaven ligger.
