@@ -12,7 +12,7 @@
 
 ** Test forbindelsen til GitHub via SSH
 1. Åpne Debian.
-2. Skriv ssh -T git@github.com og trykk enter.
+2. Skriv ssh -T git@github.com og trykk retur.
 3. Skriv inn passordet til SSH keyen.
 
 ** Legge til et repo fra Debian til GitHub
