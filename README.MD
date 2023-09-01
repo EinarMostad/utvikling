@@ -1,2 +1,2 @@
 # Utvikling
-This repo contains org files I use for teaching the subject Utvikling (development in Norwegian). Since GitHub can parse Emacs Org Mode files, you can read them here if you like. I also export the contents we work with in class to OneNote. Graded tasks are supposed to be handed in on It's learning, but I would prefer if you handed in a link to your git repo instead of uploading the source files themselves.
+This repo contains org files I use for teaching the subject Utvikling (development in Norwegian). Since GitHub can parse Emacs Org Mode files, you can read them here if you like. I also export the contents we work with in class to OneNote.
