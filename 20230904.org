@@ -1,0 +1,287 @@
+* Python - Del 1
+** Tolket og kompilert kode
+- Når man programmerer i noen programmeringsspråk må man kompilere koden før man kjører den.
+  - Når vi kompilerer kjører vi koden gjennom et program som gjør den om til maskinkode først og så kjører vi maskinkoden.
+  - Disse kalles kompilerte språk (compiled languages).
+  - Eksempler: B, C, C++, COBOL, FORTRAN, Pascal...
+  - Fordelen med dette er at koden brukeren kjører blir raskere
+  - Ulempen med dette er at det krever mange flere steg for utvikleren å teste ut ny kode
+- Når man programmerer i andre språk er det vanlig å kjøre koden gjennom en tolker (evt. en Virtuell Maskin)
+  - Vi tolker programmet ved å kjøre det gjennom et program som gjør det om til maskinkode i det koden kjøres.
+  - Disse kalles tolede språk (interpreted languages)
+  - Eksempler: Java, C#, JavaScript, Elisp, Common LISP, Guile Scheme, Clojure, Python...
+  - Fordelen er at utvikleren kan teste ut koden med en gang den er skrevet
+  - Ulempen er at å kjøre programmet går tregere fordi det må tolkes før maskinkoden kan kjøres
+- Det er egentlig ikke språket, men hvordan det vanligvis brukes som avgjør om det er kompilert eller tolket.
+  - Det går an å kompilere Python, men det er ikke den vanligste måten å bruke Python på.
+  - Common LISP utvikles vanligvis vha et tolkeprogramm, men kompileres før brukerne får programmet så det også blir raskt
+- Python-tolken (python interpreter) kan både brukes til å kjøre et program fra en fil eller kjøre kode vi skriver inn selv
+- Når man bruker et program for å prøve ut kode kalles det en REPL: Read Evaluate Print Loop.
+
+** Aritmetiske funksjoner
+- Her er noen av de vanlige aritmetiske operatorene i Python: +, -, * (gange) og / (dele).
+#+begin_src python
+  return 256 / 2
+#+end_src
+
+#+RESULTS:
+: 128.0
+
+- Prøv et par ulike for å se at det virker.
+- Ignorer at det står return. Det har bare noe med at Emacs Org Mode liker at vi skriver det for å få en verdi ut. Vi trenger ikke å skrive return når vi skriver 4 + 13 i python-tolkeren.
+
+** Typer (types)
+- Alle verdier i Python er av en bestemt type.
+- Typer avgjør hvordan de oppfører seg når de kombineres.
+- 17 og 9 er av typen int (integer = heltall)
+- 17.0, 2.5, 9. (= 9.0, men ser litt rart ut så unngå det) er av typen float (floating point = desimaltall)
+- Legg merke til at python bruker engelske tall med . (point) der vi bruker , (komma) i desimaltall.
+  
+** Heltallsdivisjon, modulo og eksponensiering
+- Noen ganger ønsker man bare å få heltallsresultatet når man deler, f.eks. for å finne ut hvor mange dager det er i 53 timer.
+- Da er heltallsdivisjon (integer division) nyttig:
+  #+begin_src python
+    return 53 // 24
+  #+end_src
+
+  #+RESULTS:
+  : 2
+
+- Noen ganger er det også nyttig å vite hvor mye som ble i rest etter en heltallsdivisjon. Da bruker vi modulo operatoren.
+- Vi bruker prosenttegnet for å gjøre dette. (Det er også vanlig i en del andre programmeringsspråk.)
+  #+begin_src python
+    return -53 % -24
+  #+end_src
+
+  #+RESULTS:
+  : -5
+
+- Når vi bruker modulo blir fortegnet i resultatet det samme som fortegnet til dividenden (det tallet vi deler på).
+- Man kan også bruker heltallsdivisjon og modulo med floats (desimaltall). Da rundes svaret ned til neste heltall, men typen på svaret blir fortsatt en float.
+#+begin_src python
+  return 3.3 // 1
+#+end_src
+
+#+RESULTS:
+: 3.0
+
+- Hvis man vil opphøye et tall i en eksponent bruker **. F.eks. 2 ** 3 = 2 * 2 * 2 = 8
+#+begin_src python
+  return 7 ** 9
+#+end_src
+
+#+RESULTS:
+: 40353607
+
+- Operatorer som har to operander (de virker på to verdier) kalles binære operatorer (binary operators).
+- Operatorer som har én operand (de virker på én verdi) kalles unary operators. (Hva heter dette på norsk?)
+#+begin_src python
+  return -87
+#+end_src
+
+#+RESULTS:
+: -87
+
+- Test også --7, ---8 etc
+
+** Hva ER en type?
+- En type i Python inneholder to ting:
+  1. En mengde verdier
+  2. En mengde operasjoner man kan gjøre på de verdiene
+- For eksempel har typen int verdiene ... -3, -2, -1, 0, 1, 2, 3, ... og operatorene +, -, *, /, ∕∕, % og **.
+- Tilfeldigvis (eller ikke så tilfeldig) har float de samme operatorene.
+- Hvis en operator kan brukes på mer enn én type kalles det en overloaded operator.
+
+*** Graden av nøyaktighet
+- Graden av nøyaktighet i floats er ikke like god som brøkene de representerer. (To delt på tre er det samme som en brøk med teller 2 og nevner 3.)
+  #+begin_src python
+    return 5 / 3 + 1 / 3
+  #+end_src
+
+  #+RESULTS:
+  : 2.0
+
+- Prøv også 5 / 3. Legg merke til at den ene slutter på 6 og den andre på sju.
+- Hvorfor er det sånn?
+- Maskinen har begrenset med minne og for å begrense hvor tregt en operasjon går vil programmeringsspråket begrense hvor mye informasjon som kan bli lagret per tall. Dermed får vi kortere, ikke veldig nøyaktige svar.
+
+*** Hvilken operator utføres først (operator precedence) 
+- For å konvertere grader Farenheit til grader Celsius trekker vi fra 32 og ganger med 5/9.
+  #+begin_src python
+    return (212 - 32) * 5 / 9
+  #+end_src
+
+  #+RESULTS:
+  : 100.0
+
+- Men når vi har 212 grader Farenheit skulle vi fått 100 grader Celsius. Hva er feil her?
+- Vi kan styre rekkefølgen ting gjøres i ved å bruke paranteser.
+
+| Prioritet | Operator    | Operasjon                                          |
+|-----------+-------------+----------------------------------------------------|
+| Høyest    | **          | Opphøyet i (exponentiation)                        |
+|           | -           | Bytte av fortegn (negation)                        |
+|           | *, /, //, % | Multiplikasjon, Divisjon, Heltallsdivisjon, Modulo |
+| Lavest    | + , -       | Addisjon og subtraksjon.                           |
+
+- Når vi bruker operatorer med samme prioritet utføres de fra venstre til høyre.
+- Hvis koden er kompleks er det lurt å bruke paranteser selv når man ikke trenger det for å gjøre koden lettere å lese.
+
+** Variabler og hukommelse
+- Akkurat som i matte bruker man navn på verdier i programmering.
+- Disse navnene kalles for variabler (variables).
+- I python kan variabelnavn bruke bokstaver, tall og understreket (_), men de kan ikke starte med et tall.
+- Du skaper en ny variabel ved å gi den en verdi (assigning a value to a variable)
+  #+begin_src python
+    degrees_celsius = 26.0
+    return degrees_celsius
+  #+end_src
+
+  #+RESULTS:
+  : 26.0
+
+- Dette kalles et tilegningsutsagn (an assignment statement)
+- Man kan bruke variabler overalt hvor man kan bruke verdier.
+- Når python ser en variabel i et uttrykk bytter den ut variablen med verdien den er satt til.
+#+begin_src python
+  degrees_celsius = 22.7
+  return degrees_celsius * 2.0
+#+end_src
+
+#+RESULTS:
+: 45.4
+
+- Hvis vi gir en variabel som allerede eksisterer en verdi får vi ikke en ny variabel. Den gamle får bare en ny verdi.
+
+*** En modell av hukommelsen
+- Vi skal se litt på en modell av hukommelsen til en datamaskin når vi kjører et python-program. (A memory model)
+- Dette kan hjelpe oss å forutset hva python gjør når vi kjører koden, som er nyttig for å bli en god programmerer.
+- Hvert sted i hukommelsen har en addresse som bare brukes på det stedet. I vår modell bruker vi id1, id2, etc.
+- Dette er hvordan vi tegner en float på 26.0 med modellen vår:
+
+[[./memorymodel1.jpg]]
+  
+- Hver boks er det vi kaller et objekt (an object).
+- I vår modell vil en variabel inneholde adressen i hukommelsen til objektet som det viser til. Vi viser hva noe peker på med en pil.
+[[./memorymodel2.jpg]]
+- Ordene vi bruker om dette er at verdien 26.0 har hukommelsesadressen id1. (value 26.0 has the memory address id1)
+- Objektet på hukommelsesaddresse id1 har typen float og verdien 26.0. (The objekt at memory address id1 is a float with the value 26.0.)
+- Variabelen degrees_celsius inneholder hukommelsesadressen id1. (Variable degrees_celsius contains the memory address id1.)
+- Variablen degrees_celsius viser til verdien 26.0. (Variable degrees_celsius refers to the value 26.0.)
+
+*** Tilegningsuttrykk
+- Når vi tilegner en variabel en verdi ser det sånn ut variabel = uttrykk.
+- Først evalueres (utregnes) uttrykket til høyre for likhetstegnet. Resultatet har en adresse i hukommelsen.
+- Så lagres hukommelsesadressen i variablen til venstre for =. Hvis navnet på variablen ikke allerede eksisterer må man lage en ny. Ellers bytter man bare ut adressen variablen peker på.
+#+begin_src python
+  degrees_celsius = 45 / 23 + 2
+  return degrees_celsius
+#+end_src
+
+#+RESULTS:
+: 3.9565217391304346
+
+- Hvis man forandret verdien av en variabel forandrer man ikke verdien på en annen.
+- Det er når vi gir variablen en verdi at uttrykket til høyre for = regnes ut.
+
+#+begin_src python
+  difference = 20
+  double = difference * 2
+  difference = 5
+  return double, difference
+#+end_src
+
+#+RESULTS:
+| 40 | 5 |
+
+- Her er det første uttrykket i hukommelsesmodellen:
+[[./memorymodel3.jpg]]
+- Her er det andre uttrykket:
+[[./memorymodel4.jpg]]
+- Her er modellen etter at vi har satt variablen difference til 5:
+[[./memorymodel5.jpg]]
+- Man kan til og med bruke en variabel på begge sider av tilegningsuttrykket:
+  #+begin_src python
+    tall = 3
+    tall = 2 * tall
+    return tall
+  #+end_src
+
+  #+RESULTS:
+  : 6
+
+- Som sagt evalueres det til høyre først, og så gis adressen til resultatet til variablen.
+
+** Utvidet tilegningsuttrykk (augmentet assignment)
+- Å tilegne en variablen er verdi som inneholder den selv er så vanlig at det fins en raskere måte å skrive det på som betyr det samme:
+ #+begin_src python
+   score = 50
+   score = score + 20
+   return score
+ #+end_src
+
+ #+RESULTS:
+ : 70
+
+ #+begin_src python
+   score = 50
+   score += 20
+   return score
+ #+end_src
+
+ #+RESULTS:
+ : 70
+
+- Når det står mer på høyre siden av den utvidede tilegningen evalueres det først og så blander man inn variablen.
+  #+begin_src python
+    d = 2
+    d *= 3 + 4
+    return d
+  #+end_src
+
+  #+RESULTS:
+  : 14
+
+- Her er alle operatorene for utvidet tilegning:
+
+  [[./augmented.jpg]]
+
+** Feilmeldinger
+- Det er to vanlige typer feil: syntax error (ikke gyldig python kode) og semantic error (man ber om noe som ikke går an).
+- Det er også mylig å få NameError når man referer til noe med feil navn.
+
+  [[./feil1.jpg]]
+
+  [[./feil2.jpg]]
+
+- Syntaks handler om logisk rekkefølge. I menneskelig språk er syntakset en del av grammatikken som kalles setningsstruktur.
+  
+  [[./feil3.jpg]]
+
+- Man kan ikke gi et tall verdien av en variabel.
+- = betyr ikke er lik i python. Det betyr tilegn verdien.
+
+** Et uttrykk som går over flere linjer
+
+- Pythons PEP8 styleguide anbefaller at ingen linjer er lengre enn 80 tegn og ingen kommentarer lenger enn 72 tegn.
+- Det er to måter å dele opp et uttrykk i python:
+  1. Sørg for at du skifter linje på innsiden av en parantes.
+  2. Bruk linje-fortsettelsestegnet som er en ovenfra og ned skråstrek (du finner den på tasten ved siden av slettetasten).
+
+[[./deleopplinjer1.jpg]]
+
+- Her er et mer realistisk eksempel hvor vi konverterer grader Fahrenheit til Celsius:
+
+[[./deleopplinjer2.jpg]]
+
+[[./deleopplinjer3.jpg]]
+
+** Beskrive kode
+- Bruk # på starten av en linje for å skrive en kommentar i koden. Bruk kommentarer for å forklare hva koden gjør.
+- Man kan også bruke # senere i linja så alt etterpå vil bli ignorert av python.
+- Bruk opphold mellom operatorer og operander for å gjøre koden lettere å forstå. Den kan kjøres uansett, men det ser så mye bedre ut og for folk som skal lese koden din betyr det noe, særlig etter hvert når koden begynner å bli mer kompleks.
+- Det er vanlig å bruke snake_case i python for variabel-navn. Hver ord starter med liten bokstav og man bruker _ mellom de.
+- Det er vanlig å bruke camelCase i C og språk med C-syntaks sånn som Java, JavaScript, C++, C# etc
+
+** Oppgaver
+- På OneNote.

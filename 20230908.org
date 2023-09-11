@@ -1,0 +1,205 @@
+* Python del 2 fortsettelse
+** Definere egne funksjoner
+- Det er flere nyttige innebygde funksjoner, men vi ønsker ofte å lage våre egne for å ha mer funksjonalitet tilgjengelig og for å slippe å gjenta kode flere ganger.
+- F.eks. kan man slippe å skrive regnestykket for å konvertere fra Fahrenheit til Celsius hver gang man gjør det hvis man lager seg en funksjon som gjør det for en. Da kan man bare skrive noe sånt som dette og få svaret ut:
+>>> convert_to_celsius(212)
+100.0
+>>> convert_to_celsius(78.8)
+26.0
+>>> convert_to_celsius(10,4)
+-12,0
+
+- Python husker og resirkulerer noen objekter.
+- En cache er en samling data. Siden små int er veldig vanlige skaper python de hver gang den starter og resirkulerer det hver gang de brukes for at ting skal gå raskere.
+- Vi kan se det ved å gjøre dette:
+>>> i = 3
+>>> j = 3
+>>> k = 4 - 1
+>>> id(i)
+4296861792
+>>> id(j)
+4296861792
+>>> id(k)
+4296861792
+
+- Som vi ser viser i, j og k til det samme objektet i hukommelsen.
+- Det samme skjer ikke nødvendigvis for store ints og for floats.
+>>> i = 30000000000
+>>> j = 30000000000
+>>> id(i)
+4301190928
+>>> id(j)
+4302234864
+>>> f = 0.0
+>>> g = 0.0
+»> id(f)
+4298223040
+»> id(g)
+4298223016
+
+- For å unngå å få en NameError når vi kaller opp en funksjon er vi nødt til å definere den:
+>>> convert_ to_celsius(212)
+
+Traceback (most recent call last):
+File "<stdin>", tine 1, in <module>
+NameError: name 'convert to celsius' is not defined
+
+- Her er en (litt forenkla) funksjonsdefinisjon:
+>>> def convert_ to_celsius(fahrenheit):
+        return (fahrenheit - 32) * 5 / 9
+
+- Legg merke til at etter navnet på funksjonen kommer en parantes. Inne i den står navnet vi bruker inne i funksjonen på argumentene til funksjonen.
+- Den første linja i en funksjonsdefinisjon kalles en function header.
+- Legg også merke til at vi må ha et kolon på slutten av linja.
+- På neste linje må vi starte med et innrykk på fire opphold (indentation). Så skriver vi stikkorder return som forteller python at den skal spytte verdien av uttrykket etterpå ut av funksjonen. Så skriver vi et uttrykk som regner ut det vi ønsker å regne ut.
+
+- Hvis man glemmer å starte linjene inne i funksjonsdefinisjonen med fire opphold så får vi denne feilmeldingen:
+File "<stdin>", line 2
+return (fahrenheit - 32) * 5 / 9
+IndentationError: expected an indented block
+ 
+- Nå når vi har definert funksjonen kan vi bruke den.
+- Vi kan også be om hjelp vha help()
+>>> help(convert_to_celsius)
+Help on function convert_to_celsius in module _main_
+convert_ to_celsius(fahrenheit)
+- Her står det ikke så mye, fordi vi ikke har lagt til noe dokumentasjon da vi definerte funksjonen.
+
+>>> def convert_to_celsius(fahrenheit):
+...    return (fahrenheit - 32) * 5 / 9
+>>> convert_to_celsius(80)
+26.666666666666668
+
+- Når vi har definert funksjonen lager python et funksjonsobjekt i hukommelsen.
+- Så kjører vi funksjonen. Da legger python en id til fahrenheit som peker på verdien 80.
+- Så evaluerer python det som står ved siden av return og putter inn verdien fahrenheit viser til der det står fahrenheit.
+- Ordet return forteller python at funksjonoppkallet skal spytte ut resultatet av utregningen.
+- Når python er ferdig med å utføre funksjonen så går den tilbake til der den var i koden der hvor funksjonen ble kalt fra. (Over her var det ikke noe mer, men hvis det var noe mer vil python gå videre på neste ting vi ber den om å gjøre.)
+
+- For å gjøre det tydelig, når vi skriver en funksjondefinisjon har den denne formen:
+def funksjonsnavn (parametre):
+    kodeblokk (en eller flere linjer)
+- Legg merke til at den andre linjen (og alle andre i kodeblokken) er fire opphold lenger inn. Som regel vil kodeblokken inneholde ordet return i starten av den siste linja for å spytte en verdi ut av funksjonen.
+- En parameter er et annet navn for et argument. (A parameter = an argument)
+- Man kan ikke ha to funksjoner med samme navn i en fil. Du får ikke en feilmelding hvis du gjør det, men siden koden utføres ovenfra og ned vil den siste funksjonen bli den som gjelder hvis to har samme navn.
+
+*** Ord med spesiell betydning
+- Noen ord er reserverte i python og kan ikke brukes til andre ting.
+- To av dem er def og return.
+- Hvis man prøver å bruke sånne ord som variabelnavn eller funksjonsnav så får man en SyntaxError.
+
+>>def-3
+File "<stdin>", line 1
+def = 3
+SyntaxError: invalid syntax
+
+>>> def return(x):
+File "<stdin>", line 1
+def return(x):
+SyntaxError: invalid syntax
+
+- Her er de reserverte ordene:
+False, None, True, and, as, assert, break, class, continue, def, del, elif, else, except, finally, for, from, global, if, import, in, is, lambda, nonlocal, not, or, pass, raise, return, try, while, with og yield
+
+*** Lokale variabler for midlertidig lagring
+- Noen utregninger er komplekse og å bryte de ned til flere steg kan gi oss mer lesbar kode.
+- I uttrykket under brytes det å løse den kvadratiske ligningen ax2 + bx + c opp til flere steg.
+- Legg merke til at alle uttrykk på innsiden av funksjonen starter med fire opphold (indentation). I eldre versjoner av python kunne man velge om man ville bruke tabulator (tab) eller oppholde (spaces), men i python tre må man bruke fire opphold innrykk (indent four spaces).
+
+>>> def quadratic(a, b, c, x):
+...     first = a * x ** 2
+...     second = b * x
+...     third = c
+...     return first + second + third
+>>> quadratic(2, 3, 4, 0.5)
+6.0
+>>> quadratic(2, 3, 4, 1.5)
+13.0
+
+- Variabler som brukes inne i en funksjon kalles lokale variabler (local variables).
+- Hver gang man kjører funksjonen skapes variablene og så slettes de igjen etterpå.
+- De kan derfor ikke brukes på utsiden av funksjonen. Da får man en feilmelding:
+
+>>> quadratic(2, 3, 4, 1.3)
+11.280000000000001
+>>> first
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+NameError: name 'first'
+is not defined
+
+- Det samme gjelder også navnet vi gir parametrene til funksjonen på første linja i funksjonsdefinisjonen
+- Området av programmet som en variabel kan brukes i kalles for variabelens scope. For en lokal variabel i en funksjon så er dens scope fra den blir definert til slutten av funksjonen.
+
+- Hvis en funksjon er laget for å ta et bestemt antall parametre kan man ikke gi den flere eller færre uten å få en feilmelding.
+>>> quadratic(1, 2, 3)
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+TypeError: quadratic() takes exactly 4 arguments (3 given)
+- Er du i tvil, bruke help() for å få informasjon om funksjonen.
+
+*** Holde styr på funksjonsoppkall i hukommelsesmodellen
+- Les koden under. Kan du forutse hva som skjer når vi kjører den?
+>>> def f(x):
+       x = 2 * x
+       return x
+>>> x = 1
+>>> x = f(x + 1) + f(x + 2)
+
+- Koden er forvirrende fordi x brukes over alt.
+- Når python kjører et funksjonsoppkall skaper den et namespace (et sted man lagrer navn) som lagrer lokale variabler for det oppkallet. Så lenge funksjonen kjører fins det namespacet, men med en gang funksjonen returnerer en verdi og avslutter slettes det.
+- Python har også et separat namespace for variabler lagd i python shellet.
+- I koden over vil x holdes styr på både i namespacet til funksjonen f og i namespacet til shellet.
+- Det er vanlig å bruke de samme navnene for lokale variabler inne i funksjoner og python takler det helt greit.
+
+- Tidligere så vi på hvordan python evalurer funksjoner, men da hoppet vi over et steg:
+  1. Evaluer argumentene fra venstre til høyre.
+
+  2. Lag et namespace for å holde styr på lokale variabler, inkludert funksjonens parametre.
+
+  3. Gi verdiene fra å evaluere argumentene til funksjonen og legg verdiene inn i de lokale variablene.
+
+  4. Kjør funksjonsdefinisjonen. Når vi kommer til stikkordet return og funksjonen spytter ut en verdi slutter funksjonen å kjøre og verdien den spyttet ut blir verdien av funksjonsoppkallet.
+
+- I hukommelsesmodellen kommer vi til å bruke en stipla linje mellom objekter i hukommelsen og bokser som definerer de ulike namespacene.
+- Boksene for namespacene pleier man å kalle Frames i Computer Science.
+
+- Som vi har sett på tidligere skaper python en variabel kalt f i framen til shellets namespace og et funksjonsobjekt når den kjører funksjonsdefinisjonen.
+- Nå tenker vi oss at vi er på første linja i koden under.
+>>> def f(x):
+...    x = 2 * x
+...    return x
+>>> x = 1
+>>> x = f(x +1) + f(x +2)
+- Da ser modellen sånn ut:
+  [[./Frames1.jpg]]
+
+- Så kjører vi linja under funksjonsoppkallet (x = 1).
+  [[./Frames2.jpg]]
+
+- Så kjører vi linja under. Først evalueres uttrykket til høyre for = som er f(x + 1) + f(x + 2). Python starter med funksjonsoppkallet til venstre først (f(x + 1)). Den evaluerer x + 1. For å finne verdien for x ser den i den nåværende framen. I shell-framen viser x til 1, så  x + 1 evalueres til 2.
+
+- Nå har vi evaluert argumentet til f(). Det neste er å skape et namespace for funksjonsoppkallet. Inne i funksjonen har vi parameteret x som vi gir verdien 2.
+[[./Frames3.jpg]]
+
+- Vi har nå to x i hver sin frame som viser til to ulike verdier. Legg også merke til at når vi tegner modellen er den nåværende framen tegnet med en tjukkere kant.
+- Det neste som skjer er at det første uttrykket i variablen kjøres. (x = x * 2). Dette er en variabeltilordning, så python evaluerer det til høyre for = først. Python ser at x er 2, så 2 * 2 blir 4. Nå viser x til 4.
+[[./Frames4.jpg]]
+
+- Så skal python kjører det siste uttrykket i funksjonsdefinisjonen. (return x). Først evalueres uttrykket til høyre for ordet return. Siden det bare er x legges verdien av x som verdi som skal spyttes ut (return value).
+[[./Frames5.jpg]]
+
+- Nå er python returnerer verdien 4 kommer den tilbake til der funksjonen ble kalt opp fra (x = f(x + 1) + f(x + 2)) og går videre på det andre funksjonsoppkallet f(x + 2). For å finne verdien til x må python se i den nåværende framen. Oppkallet til funksjonen f har returnert en verdi, så den framen er borte. Den eneste igjen er framen til shellet og variablen x viser fortsatt til 1, så x + 2 gir 3. Da har vi evaluert argumentet til f(). Det neste nå er å skape et namespace til funksjonsoppkallet og i modellen skriver vi inn parameteret x og verdien 3 som det nå har.
+[[./Frames6.jpg]]
+- Så kjører vi funksjonsdefinisjonens andre linje igjen (x = x * 2) som først evaluerer det til høyre for =, altså x * 2. Python finner at x er 3 og ganger med to og får 6. Så gjør den så x i f-framen viser til 6.
+[[./Frames7.jpg]]
+- Så kjører python den siste linja i funksjonsdefinisjonen, altså return x. Python evaluerer det etter return-stikkorder og det er bare x som er 6. Så spytter f() ut verdien 6.
+[[./Frames8.jpg]]
+- Når funksjonen returnerer en verdi går python tilbake til uttrykket den var i før den utførte funksjonen, altså x = f(x + 1) + f(x + 2). Siden python er ferdig med det siste uttrykket evalueres nå hva totalen av de to funksjonsoppkallene er ve då legge de sammen. Den får 10 som nå blir den nye verdien av x.
+[[./Frames9.jpg]]
+- Og da har vi evaluert all koden og sett på hvordan hukommelsen ser ut på alle trinnene.
+
+** Designe nye funksjoner: En oppskrift
+- Tidligere har vi sett på funksjonsdefinisjoner med def funksjonsnavn (parametre) og så en eller flere linjer kode som gjerne inneholder et return statement.
+- I virkeligheten vil man gjerne skrive litt mer i en funksjonsdefinisjon.
+- For at help() skal kunne gi noe fornuftig hjelp må vi ha det som kalles en doc-string. Den skrives på den andre linja og starter med tre anførselstegn """. Inne i den bør det stå hva funksjonen gjør. Husk å ikke lage linjer som er lengre enn 72 tegn og at man må starte fire opphold inn på linja når man skriver innhold inne i funksjonsdefinisjonen.

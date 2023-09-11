@@ -1,0 +1,51 @@
+* Python Del 2: Funksjoner
+** VSCode-tilleggene for python og WSL2
+- Åpne VSCode og Trykk på Extensions
+- Legg til WSL-tillegget
+- Klikk nederst i venstre hjørnet og velg Connect to WSL using distro… i menyen øverst på skjermen.
+- Legg til Python-tillegget (inne i WSL2)
+- Test å lage en fil med python-kode som ender i .py
+- Legg merke til at nederst, litt til høyre for midten, kan du se Ln og Col som gir deg linjenummer og kolonne.
+- Unngå å få lengre enn 80 kolonner med python-kode og 72 tegn med kommentarer og docstrings.
+- Trykk oppe til høyre der det er et play-symbol for å kjøre koden
+- Legg merke til at koden kjøres ved at Debian kjøres og /bin/python3 gis navnet på fila du skrev å kjøre.
+  
+** Oppskrift på funksjonsdefinisjon
+def funksjonsnavn(parameternavn: type, parameternavn: type ...) -> type:
+    """ Docstring som forklarer hva funksjonen gjør. Denne vises hvis
+    du bruker help(). Husk at linjer i kommentarer skal være maks 72
+    kolonner (columns) eller tegn brede og at de i likhet med alt annet
+    inne i funksjonsdefinisjonen må starte etter fire opphold.
+    >>> funksjonsnavn(testverdi1, testverdi2 ...)
+    forventet svar
+    >>> funksjonsnavn(testverdi1, testverdi2 ...)
+    forventet svar
+    >>> funksjonsnavn(testverdi1, testverdi2 ...)
+    forventet svar
+    """
+    return noe, evt en kodeblokk på flere linjer med return noe sist.
+    
+** Oppgave 1
+- Skriv en funksjon som regner ut hvor gammel en person er basert på fødselsår i en fil. Skriv docstring og tre tester.
+- Test om funksjonen virker ved å skrive print(funksjonsnavn(argument)) og de tre verdiene du testet.
+- Stage fila i git repoet ditt og commit den når du er fornøyd med den.
+- Git push koden din opp til GitHub-repoet ditt fra VSCode eller kommandolinja.
+
+** Oppgave 2
+- Skriv en funksjon som regner ut motstanden R når man vet strømmen I og spenningen U ut fra Ohms lov: U = I * R
+- Herfra og framover regner jeg med at du alltid skriver docstreng og tester når du definerer en funksjon.
+- Test om funksjonen virker ved å bruke print()-funksjonen sånn som over.
+- Når du er fornøyd med funksjonen kan du stage fila i git repoet ditt og commit den.
+- Git push koden din opp til GitHub-repoet ditt.
+
+** Oppgave 3
+- Skriv en funksjon som regner ut hvor mye det koster kantina å kjøpe inn pasta til et varmt måltid ut fra hvor mange de bergner pasta til, hvor mange gram pasta de tenker hver person spiser og kiloprisen på pasta. Spør kantina om prisen på pasta, hvor mye de beregner per person og hvor mange de regner med spiser varm mat når de har pasta for å ha noen troverdige tall å bruke som argumenter til funksjonen.
+- Test om funksjonen virker ved å bruke print()-funksjonen sånn som over.
+- Push koden din opp til GitHub.
+
+** Oppgave 4
+- Lag en funksjon som regner ut hvor mange timer per måned et IT-system må spare en sivilingeniør for i en industribedrift før abbonementsprisen på 300 kr per måned er tjent inn. Du må mest sannsynlig sjekke hva en sivilingeniør tjener per år for å regne ut hvor mye hver time personen jobber koster bedriften for å finne ut dette. (Siden vi ikke vet hva en times arbeid egentlig er verdt for bedriften i form av økt profitt den kan bringe bruker vi heller årsinntekten til en sivilingeniør som utgangspunkt for dette regnestykket.)
+- Test om funksjonen virker på samme måte som over.
+- Legg til koden i repoet ditt på GitHub sånn som i oppgavene over.
+
+** Repetisjonskahoot fra spørsmålene dere laget
